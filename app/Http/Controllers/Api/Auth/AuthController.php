@@ -33,4 +33,9 @@ class AuthController extends Controller
 
         return response()->json(['token' => $token]);
     }
+
+    public function GetMe(){
+        $user = $this->userService->getMe();
+        return new UserResource($user);
+    }
 }

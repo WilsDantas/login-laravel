@@ -20,4 +20,8 @@ class UserService{
     public function Auth(array $data){
         return $this->userRepository->Auth($data);
     }
+
+    public function GetMe(){
+        return $this->userRepository->GetMe();
+    }
 }

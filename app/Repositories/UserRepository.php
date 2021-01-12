@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Repositories\Contracts\UserRepositoryInterface;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserRepository implements UserRepositoryInterface
@@ -17,7 +18,7 @@ class UserRepository implements UserRepositoryInterface
 
     public function Register(array $data)
     {
-        $data['password'] = bcrypt($data['password']);
+        //$data['password'] = bcrypt($data['password']);
 
         return $this->entity->create($data);
     }
@@ -26,8 +27,13 @@ class UserRepository implements UserRepositoryInterface
     {
         $user = $this->entity->where('email', $data['email'])->first();
 
-        if($user && Hash::check($data['password'], $user->password)){
+        if ($user && Hash::check($data['password'], $user->password)) {
             return $user->createToken($data['email'])->plainTextToken;
         }
+    }
+
+    public function GetMe()
+    {
+        return Auth::user();
     }
 }
