@@ -24,6 +24,13 @@ class AuthController extends Controller
             return response()->json(['message' => 'Falha ao Tentar Cadastrar Usuário']);
         }
         return new UserResource($user);
+    }
 
+    public function auth(AuthRequest $request){
+        if(!$token = $this->userService->auth($request->All())){
+            return response()->json(['message' => 'invalid_credentials'], 404);
+        }
+
+        return response()->json(['token' => $token]);
     }
 }

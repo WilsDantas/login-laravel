@@ -26,15 +26,14 @@ class AuthRequest extends FormRequest
         return [
             'email' => 'required|email',
             'password' => 'required|min:6|max:16',
-            'device_name' => 'required'
         ];
     }
 
     // public function messages()
     // {
     //     return [
-    //         'title.required' => 'A title is required',
-    //         'body.required' => 'A message is required',
+    //         'email.required' => 'O campo de email é obrigatório',
+    //         'password.required' => 'O campo de password é obrigatório',
     //     ];
     // }
 }

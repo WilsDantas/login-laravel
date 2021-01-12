@@ -21,4 +21,13 @@ class UserRepository implements UserRepositoryInterface
 
         return $this->entity->create($data);
     }
+
+    public function Auth(array $data)
+    {
+        $user = $this->entity->where('email', $data['email'])->first();
+
+        if($user && Hash::check($data['password'], $user->password)){
+            return $user->createToken($data['email'])->plainTextToken;
+        }
+    }
 }

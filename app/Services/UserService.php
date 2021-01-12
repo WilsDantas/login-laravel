@@ -16,4 +16,8 @@ class UserService{
     public function Register(array $data){
         return $this->userRepository->Register($data);
     }
+
+    public function Auth(array $data){
+        return $this->userRepository->Auth($data);
+    }
 }
