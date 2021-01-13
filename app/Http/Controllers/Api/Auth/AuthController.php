@@ -38,4 +38,12 @@ class AuthController extends Controller
         $user = $this->userService->getMe();
         return new UserResource($user);
     }
+
+    public function logout(Request $request){
+        $user = $request->user();
+
+        // Revoque All Tokens User
+
+        $user->tokens()->delete();
+    }
 }
