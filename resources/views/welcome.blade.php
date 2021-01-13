@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    PROJETO LOGIN LARAVEL+FLUTTER USANDO SANCTUM
                 </div>
 
                 <div class="links">
